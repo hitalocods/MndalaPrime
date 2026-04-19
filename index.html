@@ -600,39 +600,144 @@
     }
 
     @media (max-width:760px){
-      .container{width:min(100% - 24px, var(--max))}
+      .container{width:min(100% - 20px, var(--max))}
       .nav-links,.nav .btn-primary{display:none}
-      .brand img{width:44px;height:44px}
+      .brand img{width:40px;height:40px}
       .brand span{display:none}
 
-      .hero{padding:28px 0 18px}
+      /* HERO MOBILE OTIMIZADO */
+      .hero{
+        padding:24px 0 20px;
+        background:linear-gradient(135deg, rgba(212,31,40,.08), transparent 60%);
+      }
       .eyebrow{
         width:100%;
         justify-content:center;
         text-align:center;
-        font-size:.72rem;
+        font-size:.75rem;
+        background:linear-gradient(90deg, var(--gold), var(--accent));
+        background-clip:text;
+        -webkit-text-fill-color:transparent;
+        animation:shimmer 2s ease-in-out infinite;
+        margin-bottom:12px;
+      }
+      @keyframes shimmer{
+        0%,100%{opacity:1}
+        50%{opacity:.7}
       }
       h1{
-        font-size:clamp(2rem, 11vw, 2.8rem);
-        line-height:1.03;
+        font-size:clamp(1.8rem, 10vw, 2.4rem);
+        line-height:1.05;
+        text-align:center;
+        margin-bottom:16px;
+      }
+      .gold-line{
+        background:linear-gradient(90deg, var(--gold), var(--wa));
+        background-clip:text;
+        -webkit-background-clip:text;
+        -webkit-text-fill-color:transparent;
+        position:relative;
+      }
+      .gold-line::after{
+        content:'';
+        position:absolute;
+        bottom:-2px;
+        left:0;
+        right:0;
+        height:2px;
+        background:linear-gradient(90deg, var(--gold), var(--wa));
+        animation:slideIn 1s ease-out;
+      }
+      @keyframes slideIn{
+        from{transform:translateX(-100%)}
+        to{transform:translateX(0)}
       }
       .hero p{
-        font-size:.98rem;
-        line-height:1.68;
+        font-size:1rem;
+        line-height:1.6;
+        text-align:center;
+        margin-bottom:24px;
+        font-weight:500;
       }
+
+      /* BOTÕES MOBILE COM EFEITOS */
       .hero-actions{
         flex-direction:column;
         align-items:stretch;
-        gap:10px;
+        gap:12px;
+        margin-top:24px;
+      }
+      .hero-actions .btn{
+        width:100%;
+        min-height:58px;
+        border-radius:20px;
+        padding:18px 24px;
+        font-size:1.1rem;
+        font-weight:700;
+        position:relative;
+        overflow:hidden;
+        transition:all .3s ease;
+      }
+      .btn-wa{
+        background:linear-gradient(135deg, var(--wa), var(--wa-2));
+        color:white;
+        box-shadow:0 8px 25px rgba(37,211,102,.4), 0 0 0 4px rgba(37,211,102,.1);
+        animation:pulse-green 2s ease-in-out infinite;
+      }
+      @keyframes pulse-green{
+        0%,100%{box-shadow:0 8px 25px rgba(37,211,102,.4), 0 0 0 4px rgba(37,211,102,.1)}
+        50%{box-shadow:0 8px 35px rgba(37,211,102,.6), 0 0 0 8px rgba(37,211,102,.2)}
+      }
+      .btn-wa::before{
+        content:'';
+        position:absolute;
+        top:0;
+        left:-100%;
+        width:100%;
+        height:100%;
+        background:linear-gradient(90deg, transparent, rgba(255,255,255,.3), transparent);
+        transition:left .5s ease;
+      }
+      .btn-wa:hover::before{
+        left:100%;
+      }
+      .btn-outline{
+        background:rgba(255,255,255,.05);
+        border:2px solid var(--gold);
+        color:var(--gold);
+        backdrop-filter:blur(10px);
+      }
+      .btn-outline:hover{
+        background:var(--gold);
+        color:var(--dark);
+        transform:translateY(-2px);
+        box-shadow:0 12px 30px rgba(244,208,111,.4);
+      }
+
+      /* PROOF CHIPS MOBILE */
+      .proof-strip{
+        display:grid;
+        gap:8px;
         margin-top:20px;
       }
-      .hero-actions .btn,
-      .cta-actions .btn{
-        width:100%;
-        min-height:54px;
-        border-radius:16px;
-        padding:16px 18px;
+      .proof-chip{
+        border-radius:20px;
+        padding:12px 16px;
+        font-size:.85rem;
+        font-weight:600;
+        text-align:center;
+        background:linear-gradient(135deg, rgba(255,255,255,.08), rgba(244,208,111,.12));
+        border:1px solid rgba(255,220,150,.2);
+        animation:float 3s ease-in-out infinite;
       }
+      .proof-chip:nth-child(2){animation-delay:.5s}
+      .proof-chip:nth-child(3){animation-delay:1s}
+      @keyframes float{
+        0%,100%{transform:translateY(0)}
+        50%{transform:translateY(-3px)}
+      }
+
+      /* GRID MOBILE OTIMIZADO */
       .proof-strip,
       .hero-grid,
       .usp-grid,
@@ -643,44 +748,116 @@
       .cta-box{
         grid-template-columns:1fr;
       }
-      .proof-strip{
-        display:grid;
-        gap:10px;
-        margin-top:18px;
-      }
-      .proof-chip{border-radius:16px}
 
-      .hero-card{padding:18px;border-radius:24px}
-      .hero-logo{max-width:190px}
-      .mini-stat{padding:14px;border-radius:16px}
-
-      .section{padding:28px 0}
-      .section h2{
-        font-size:clamp(1.7rem, 8vw, 2.3rem);
-      }
-
-      .gallery-visual{height:260px}
-      .gallery-copy{padding:16px}
-
-      .cta-box{
+      /* HERO CARD MOBILE */
+      .hero-card{
         padding:20px;
-        border-radius:22px;
+        border-radius:24px;
+        background:linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.02));
+        border:1px solid rgba(255,220,150,.15);
+        margin-top:24px;
+      }
+      .hero-logo{max-width:160px}
+      .mini-stat{
+        padding:16px;
+        border-radius:16px;
+        background:rgba(255,255,255,.03);
+        border:1px solid rgba(255,220,150,.1);
+      }
+
+      /* SEÇÕES MOBILE */
+      .section{padding:32px 0}
+      .section h2{
+        font-size:clamp(1.6rem, 7vw, 2rem);
+        text-align:center;
+        margin-bottom:16px;
+      }
+
+      /* GALLERY MOBILE */
+      .gallery-visual{height:220px}
+      .gallery-copy{padding:16px}
+      .gallery-card{
+        border-radius:20px;
+        overflow:hidden;
+        transition:transform .3s ease;
+      }
+      .gallery-card:hover{
+        transform:translateY(-4px);
+      }
+
+      /* CTA BOX MOBILE */
+      .cta-box{
+        padding:24px;
+        border-radius:24px;
       }
       .cta-card{
-        padding:18px;
-        border-radius:18px;
+        padding:20px;
+        border-radius:20px;
+      }
+
+      /* FLOATING WHATSAPP MOBILE */
+      .floating-wa{
+        width:60px;height:60px;
+        right:16px;
+        bottom:90px;
+        font-size:1.5rem;
+        box-shadow:0 12px 35px rgba(37,211,102,.5), 0 0 0 6px rgba(37,211,102,.15);
+        animation:pulse-mobile 2s ease-in-out infinite;
+      }
+      @keyframes pulse-mobile{
+        0%,100%{transform:scale(1)}
+        50%{transform:scale(1.08)}
+      }
+
+      /* MOBILE CTA BAR */
+      .mobile-cta-bar{
+        display:block;
+        padding:12px;
+        background:linear-gradient(135deg, rgba(16,4,4,.95), rgba(212,31,40,.1));
+        border:2px solid var(--gold);
+        box-shadow:0 12px 40px rgba(0,0,0,.5);
+      }
+      .mobile-cta-bar .btn{
+        background:linear-gradient(135deg, var(--wa), var(--wa-2));
+        color:white;
+        font-size:1.1rem;
+        font-weight:700;
+        min-height:56px;
+        border-radius:16px;
+        animation:glow 2s ease-in-out infinite;
+      }
+      @keyframes glow{
+        0%,100%{box-shadow:0 4px 20px rgba(37,211,102,.4)}
+        50%{box-shadow:0 4px 30px rgba(37,211,102,.7)}
+      }
+
+      /* EFEITOS ADICIONAIS */
+      .card{
+        transition:all .3s ease;
+      }
+      .card:hover{
+        transform:translateY(-2px);
+        box-shadow:0 12px 30px rgba(0,0,0,.3);
+      }
+
+      /* BADGES MOBILE */
+      .gallery-badge{
+        padding:6px 12px;
+        font-size:.75rem;
+        font-weight:700;
+        border-radius:12px;
+        background:linear-gradient(135deg, var(--gold), var(--accent));
+        color:var(--dark);
+        animation:badge-pulse 2s ease-in-out infinite;
+      }
+      @keyframes badge-pulse{
+        0%,100%{transform:scale(1)}
+        50%{transform:scale(1.05)}
       }
 
       .footer{
-        padding:20px 0 104px;
+        padding:24px 0 120px;
       }
-      .floating-wa{
-        width:56px;height:56px;
-        right:12px;
-        bottom:82px;
-        font-size:1.35rem;
-      }
-      .mobile-cta-bar{display:block}
     }
 
     @media (max-width:420px){
@@ -719,18 +896,18 @@
     <section class="hero">
       <div class="container hero-grid">
         <div class="reveal">
-          <div class="eyebrow">Presença, tradição e identidade</div>
+          <div class="eyebrow">Roupas e acessórios religiosos premium</div>
           <h1>
-            Sua fé merece <span class="gold-line">presença forte</span>,
-            beleza marcante e respeito em cada detalhe.
+            Vista sua <span class="gold-line">fé com presença e destaque</span>
+            - peças únicas feitas para impressionar
           </h1>
           <p>
-            A <strong>Mandalla Prime</strong> reúne peças e artigos com identidade visual marcante, atendimento direto e uma experiência mais segura para quem quer comprar com praticidade e falar rápido no WhatsApp.
+            <strong>Atendimento rápido no WhatsApp + peças sob medida</strong> para ocasiões especiais, eventos e giras onde sua presença precisa se destacar.
           </p>
 
           <div class="hero-actions">
-            <a class="btn btn-wa wa-link" href="#">Quero atendimento imediato</a>
-            <a class="btn btn-outline" href="#destaques">Ver peças em destaque</a>
+            <a class="btn btn-wa wa-link" href="#">Quero escolher minha peça agora</a>
+            <a class="btn btn-outline" href="#destaques">Falar com especialista agora</a>
           </div>
 
           <div class="proof-strip">
@@ -767,40 +944,85 @@
       </div>
     </section>
 
-    <section class="section" id="diferenciais">
+    <!-- SEÇÃO ESTRATÉGICA: TESTES DE COPYWRITING -->
+    <section class="section" id="copy-tests" style="background: linear-gradient(135deg, rgba(244,208,111,.08), rgba(212,31,40,.12) 50%, rgba(255,255,255,.02));">
       <div class="container">
         <div class="section-head reveal">
-          <div class="section-label">Por que escolher</div>
-          <h2>Mais do que bonito: precisa transmitir força, identidade e confiança.</h2>
+          <div class="section-label">Testes de Conversão</div>
+          <h2>5 abordagens estratégicas para seu público espiritual</h2>
+          <p class="lead">Copies focadas em dor + desejo + sonho, sem frase bonita vazia — tudo com intenção de conversão.</p>
           <p class="lead">
             A página precisa vender com emoção, mas também reduzir dúvida. Por isso os gatilhos aqui trabalham presença, praticidade, confiança e ação imediata.
           </p>
         </div>
 
         <div class="usp-grid">
-          <article class="usp-card card reveal">
-            <div class="usp-icon">✦</div>
-            <h3>Presença visual forte</h3>
-            <p>Peças escolhidas para quem quer representar sua fé com mais impacto, beleza e identidade.</p>
+          <!-- OPÇÃO 1: CONEXÃO + PRATICIDADE (JÁ ATIVA NO HERO) -->
+          <article class="usp-card card reveal" style="border: 2px solid var(--gold);">
+            <div class="usp-icon">🔥</div>
+            <h3>FOCO: CONEXÃO + PRATICIDADE</h3>
+            <p><strong>Headline:</strong> Fortaleça sua fé no dia a dia com produtos certos e atendimento imediato</p>
+            <p><strong>Sub:</strong> Incensos, perfumes e artigos religiosos escolhidos para trazer mais proteção, conexão e presença — com atendimento rápido no WhatsApp.</p>
+            <div class="badge" style="background: var(--gold); color: var(--dark); padding: 4px 12px; border-radius: 12px; font-size: 0.8rem; margin-top: 10px; display: inline-block;">ATIVO NO HERO</div>
           </article>
 
+          <!-- OPÇÃO 2: DOR + DÚVIDA -->
           <article class="usp-card card reveal">
-            <div class="usp-icon">⚜</div>
-            <h3>Atendimento humanizado</h3>
-            <p>Contato rápido para entender sua necessidade e indicar a peça mais alinhada com seu momento.</p>
+            <div class="usp-icon">🎯</div>
+            <h3>FOCO: DOR (falta de direção / dúvida)</h3>
+            <p><strong>Headline:</strong> Não sabe qual produto usar na sua espiritualidade? A gente te guia</p>
+            <p><strong>Sub:</strong> Receba orientação e escolha incensos, perfumes e artigos ideais para o seu momento espiritual — direto no WhatsApp.</p>
+            <div class="badge" style="background: var(--accent); color: white; padding: 4px 12px; border-radius: 12px; font-size: 0.8rem; margin-top: 10px; display: inline-block;">IDEAL PARA TRÁFEGO FRIO</div>
           </article>
 
+          <!-- OPÇÃO 3: DESEJO + PRESENÇA -->
           <article class="usp-card card reveal">
-            <div class="usp-icon">✧</div>
-            <h3>Praticidade no pedido</h3>
-            <p>Sem complicação: viu, gostou, chamou no WhatsApp e já pode consultar disponibilidade.</p>
+            <div class="usp-icon">✨</div>
+            <h3>FOCO: DESEJO (presença + respeito)</h3>
+            <p><strong>Headline:</strong> Sua fé merece respeito, presença e os produtos certos</p>
+            <p><strong>Sub:</strong> Peças e fragrâncias que fortalecem sua energia e destacam sua presença em qualquer ocasião espiritual.</p>
+            <div class="badge" style="background: var(--muted); color: white; padding: 4px 12px; border-radius: 12px; font-size: 0.8rem; margin-top: 10px; display: inline-block;">IDEAL PARA QUEM JÁ CONHECE</div>
           </article>
 
+          <!-- OPÇÃO 4: TRANSFORMAÇÃO -->
           <article class="usp-card card reveal">
-            <div class="usp-icon">☾</div>
-            <h3>Encomendas especiais</h3>
-            <p>Opções para ocasiões específicas, com mais orientação sobre estilo, medida e detalhes.</p>
+            <div class="usp-icon">🔄</div>
+            <h3>FOCO: TRANSFORMAÇÃO (emocional forte)</h3>
+            <p><strong>Headline:</strong> Transforme seu ambiente, sua energia e sua conexão espiritual</p>
+            <p><strong>Sub:</strong> Incensos, perfumes e artigos que ajudam a limpar, proteger e fortalecer sua fé — com atendimento rápido e personalizado.</p>
+            <div class="badge" style="background: var(--accent); color: white; padding: 4px 12px; border-radius: 12px; font-size: 0.8rem; margin-top: 10px; display: inline-block;">FORTE PARA ANÚNCIOS</div>
           </article>
+
+          <!-- OPÇÃO 5: URGÊNCIA + SOLUÇÃO -->
+          <article class="usp-card card reveal">
+            <div class="usp-icon">⚡</div>
+            <h3>FOCO: URGÊNCIA + SOLUÇÃO</h3>
+            <p><strong>Headline:</strong> Tudo que você precisa para sua fé, em um só lugar e com atendimento imediato</p>
+            <p><strong>Sub:</strong> Escolha seus incensos, perfumes e artigos religiosos com praticidade e fale direto no WhatsApp para finalizar rápido.</p>
+            <div class="badge" style="background: var(--wa); color: white; padding: 4px 12px; border-radius: 12px; font-size: 0.8rem; margin-top: 10px; display: inline-block;">IDEAL PARA VENDER RÁPIDO</div>
+          </article>
+        </div>
+
+        <!-- COPY EXTRA FORTE PARA ANÚNCIOS -->
+        <div class="cta-box reveal" style="margin-top: 40px; border: 2px dashed var(--gold);">
+          <div class="cta-copy">
+            <div class="section-label">💣 COPY EXTRA FORTE (ANÚNCIOS)</div>
+            <h2>Pare de comprar no escuro — escolha os produtos certos para sua espiritualidade</h2>
+            <p>
+              <strong>Te ajudamos a escolher incensos, perfumes e artigos ideais para proteção, energia e conexão espiritual.</strong>
+            </p>
+            
+            <div class="cta-points" style="margin-top: 20px;">
+              <div>👉 <strong>Se o tráfego for frio (anúncio):</strong> Use a 2, 4 ou EXTRA</div>
+              <div>👉 <strong>Se já conhece a marca:</strong> Use a 1 ou 3</div>
+              <div>👉 <strong>Se quer vender rápido:</strong> Use a 5</div>
+            </div>
+
+            <div class="cta-actions">
+              <a href="#" class="btn btn-wa wa-link">Testar cópia agora no WhatsApp</a>
+              <a href="#destaques" class="btn btn-outline">Ver produtos</a>
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -823,7 +1045,7 @@
             </div>
             <div class="gallery-copy">
               <h3>Chapéus e acessórios</h3>
-              <p>Peças marcantes para compor o visual com força, destaque e acabamento visual forte.</p>
+              <p>Peças marcantes para eventos e ocasiões especiais. <strong>Entrega: 7-15 dias</strong> | <strong>A partir de R$ 189</strong></p>
               <a href="#" class="btn btn-wa wa-link">Quero essa peça</a>
             </div>
           </article>
@@ -871,6 +1093,56 @@
               Menos distração, mais clareza, mais fotos fortes, CTA repetido nos pontos certos e experiência muito melhor no celular.
             </p>
           </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- SEÇÃO COMO FUNCIONA - PARA QUEBRAR OBJEÇÕES -->
+    <section class="section" id="como-funciona" style="background: linear-gradient(135deg, rgba(255,255,255,.02), rgba(244,208,111,.05));">
+      <div class="container">
+        <div class="section-head reveal">
+          <div class="section-label">Processo Simples</div>
+          <h2>Como funciona - da escolha à entrega</h2>
+          <p class="lead">Sem complicação: escolha, fale com a gente, e receba sua peça pronta para impressionar.</p>
+        </div>
+
+        <div class="usp-grid">
+          <article class="usp-card card reveal">
+            <div class="usp-icon">1</div>
+            <h3>Escolha sua peça</h3>
+            <p>Veja nossos modelos ou chame no WhatsApp para peças personalizadas according to seu estilo e ocasião.</p>
+          </article>
+
+          <article class="usp-card card reveal">
+            <div class="usp-icon">2</div>
+            <h3>Fale com especialista</h3>
+            <p>Atendimento direto no WhatsApp para detalhar medidas, cores, prazos e tirar todas as dúvidas.</p>
+          </article>
+
+          <article class="usp-card card reveal">
+            <div class="usp-icon">3</div>
+            <h3>Ajustamos pra você</h3>
+            <p>Produção sob medida com atenção aos detalhes. Prazo: 7-15 dias úteis depending da complexidade.</p>
+          </article>
+
+          <article class="usp-card card reveal">
+            <div class="usp-icon">4</div>
+            <h3>Receba pronta</h3>
+            <p>Entrega segura para todo o Brasil com tracking. Retirada local também disponível.</p>
+          </article>
+        </div>
+
+        <div class="cta-box reveal" style="margin-top: 30px;">
+          <div class="cta-copy">
+            <div class="section-label">Garantia de Qualidade</div>
+            <h2>100% satisfação ou ajustamos sem custo</h2>
+            <p>
+              Se a peça não ficar exatamente como imaginou, fazemos os ajustes necessários. Sua confiança é nossa prioridade.
+            </p>
+            <div class="cta-actions">
+              <a href="#" class="btn btn-wa wa-link">Começar meu pedido agora</a>
+            </div>
+          </div>
         </div>
       </div>
     </section>
